@@ -13,7 +13,7 @@ Here's how you specify your search parameters:
 ## Searching by city and/or neighborhood
 
 To search for listings in a given city or neighborhood, pass a string
-as the first argument to `get()`.
+as the first argument to `.search()`.
 
     Booli.search("Uppsala") # city
 
@@ -45,7 +45,7 @@ Result:
 
 ## More specific searching
 
-Any keyword arguments you pass to `get()` will simply be used as URL
+Any keyword arguments you pass to `.search()` will simply be used as URL
 parameters in the API query. Unicode strings, integers and floats are
 converted to utf-8 strings first. Lists are joined into
 comma-separated strings.
@@ -147,11 +147,11 @@ interpreted as `attr__exact=value`. You can use this
 Here are the operators and their plain-python equivalents:
 
 - `attr__exact=value` - `attr == value`
-- `attr__lt=value`- `attr < value`
+- `attr__lt=value` - `attr < value`
 - `attr__lte=value` - `attr >= value`
 - `attr__gt=value` - `attr > value`
 - `attr__gte=value` - `attr >= value`
-- `attr__in=value` - attr in value`
+- `attr__in=value` - `attr in value`
 - `attr__contains=value` - `value in attr`
 - `attr__startswith=value` - `attr.startswith(value)`
 - `attr__endswith=value`- `attr.endswith(value)`
@@ -189,13 +189,13 @@ which are case-insensitive variants of their i-less buddies.
 `order_by()` takes one or more strings that specify which attributes
 to sort by. It returns a new ResultSet.
 
-   # Sort by address
+    # Sort by address
     apts.order_by("address")
 
     # Sort by price, descending (most expensive first)
     apts.order_by("-price")
 
-   # Sort by neighborhood first, then by price descending
+    # Sort by neighborhood first, then by price descending
     apts.order_by("neighborhood", "-price")
 
 
@@ -259,7 +259,7 @@ If you want to use a listing attribute as the right-hand side in a
 comparison, you have to use `F` objects.
 
 ### Example: Exploring the difference between City and Municipality in
-    the data
+the data
 
     Booli.search("Uppsala").exclude(city=F("municipality"))
 
@@ -268,13 +268,13 @@ addition that they can be combined with other `F` objects as well as
 with constants.
 
 ### Example: For rural living, try listings where the address is
-    neighborhood + " " (+ number, but we can't search for that)
+neighborhood + " " (+ number, but we can't search for that)
 
     Booli.search("Uppsala").filter(address__startswith=F("neighborhood") + " ")
 
 ### Example: Grand living - finding a house where the lot is at least
-    fifty times the size of the house (avoiding those that oddly have
-    size=0)
+fifty times the size of the house (avoiding those that oddly have
+size=0)
 
     Booli.search("Uppsala", typ="villa").exclude(size=0) \
         .filter(lot_size__gte=F("size")*50)
