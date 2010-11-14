@@ -267,14 +267,15 @@ the data
 addition that they can be combined with other `F` objects as well as
 with constants.
 
-### Example: For rural living, try listings where the address is
-neighborhood + " " (+ number, but we can't search for that)
+### Example: For rural living, try listings where the address is neighborhood + " "
+
+(+ number, but we can't search for that)
 
     Booli.search("Uppsala").filter(address__startswith=F("neighborhood") + " ")
 
-### Example: Grand living - finding a house where the lot is at least
-fifty times the size of the house (avoiding those that oddly have
-size=0)
+### Example: Grand living - finding a house where the lot is at least fifty times the size of the house
+
+(avoiding those that oddly have size=0)
 
     Booli.search("Uppsala", typ="villa").exclude(size=0) \
         .filter(lot_size__gte=F("size")*50)
