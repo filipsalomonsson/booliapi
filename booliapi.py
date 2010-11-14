@@ -64,6 +64,8 @@ def urlify_value(value):
         return value.encode("utf-8")
     elif isinstance(value, int):
         return str(int(value))
+    elif isinstance(value, list):
+        return ",".join(urlify_value(x) for x in value)
     return str(value)
 
 def smart_urlencode(params):
