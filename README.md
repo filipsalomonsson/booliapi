@@ -68,7 +68,7 @@ then again, so are you, probably. Puss på dig.
 The objects we're dealing with are called `Listing`s. The data about
 each listing is stored as attributes.
 
-**Basic data***
+**Basic data**
 
 - `type` - what type of property this listing is for. "lägenhet", "villa", etc.
 - `address` - the street address of the listed property
