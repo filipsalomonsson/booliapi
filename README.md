@@ -19,8 +19,7 @@ as the first argument to `.search()`.
 
     Booli.search("Uppsala/Luthagen") # city + neighborhood
 
-### Example: Printing a nice list of apartments in Uppsala's
-    "Fålhagen" neighborhood.
+### Example: Printing a nice list of apartments in Uppsala's "Fålhagen" neighborhood.
     
     for listing in Booli.search("Uppsala/Fålhagen", typ=u"lägenhet"):
         print "%s, %s" % (listing.address, listing.neighborhood)
