@@ -68,7 +68,7 @@ then again, so are you, probably. Puss på dig.
 The objects we're dealing with are called `Listing`s. The data about
 each listing is stored as attributes.
 
-## Basic data
+*Basic data*
 - `type` - what type of property this listing is for. "lägenhet", "villa", etc.
 - `address` - the street address of the listed property
 - `neighborhood` and `city` - exactly what you think
@@ -83,12 +83,12 @@ each listing is stored as attributes.
  property called `rooms_as_text` that gives you a nicer string
  representation.
 
-## Additional geographic data
+*Additional geographic data*
 - `latitude` and `longitude`
 - `municipality`
 - `county`
 
-## Metadata
+*Metadata*
 - `url` - the url to this listing on booli.se
 - `image_url` - the url to a thumbnail image, if available
 - `agency` - the name of the real estate agency representing the seller
@@ -258,8 +258,7 @@ combined filter condition.
 If you want to use a listing attribute as the right-hand side in a
 comparison, you have to use `F` objects.
 
-### Example: Exploring the difference between City and Municipality in
-the data
+### Example: Exploring the difference between City and Municipality in the data
 
     Booli.search("Uppsala").exclude(city=F("municipality"))
 
